@@ -30,7 +30,7 @@ Ao copiar ou salvar, cada conquista é registrada no formato `Categoria - Conqui
 | Profissional | 💼 | Trabalho e projetos |
 | Financeiro | 💰 | Economia, investimentos |
 
-Itens que não casam com nenhuma categoria caem em **Lazer** por padrão (configurável em `js/organizador.js`).
+Itens que não casam com nenhuma categoria caem em **Família / Amigos / Colegas** por padrão (configurável em `js/organizador.js`).
 
 ## Como funciona a classificação
 
@@ -39,7 +39,7 @@ Cada categoria em `js/categories/*.js` declara um array `keywords`. O organizado
 1. Quebra o texto por linhas, remove bullets (`-`, `•`, `*`, `>`...) e tira prefixos do WhatsApp (`[12:20, 10/05/2026] Fulano:` e variações).
 2. Normaliza cada item (lowercase, sem acentos, sem pontuação).
 3. Conta matches de keyword por categoria — palavras-chave **multi-palavra** (ex.: `"almocei com"`) valem mais do que palavras isoladas.
-4. A categoria com maior pontuação ganha; sem matches → fallback (`lazer`).
+4. A categoria com maior pontuação ganha; sem matches → fallback (`familia`).
 
 Você pode colar conteúdo direto do "Copiar mensagem" do WhatsApp — o app limpa data/hora/remetente automaticamente.
 
