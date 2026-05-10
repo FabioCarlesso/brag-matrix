@@ -21,10 +21,32 @@ function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+// Remove o prefixo de metadados que o WhatsApp adiciona quando você "Copia"
+// uma mensagem ou exporta a conversa. Cobre as variações mais comuns:
+//   [12:20, 10/05/2026] Fabio: texto
+//   [10/05/2026, 12:20] Fabio: texto
+//   12:20 - Fabio: texto
+//   10/05/2026 12:20 - Fabio: texto
+// Linhas sem esse prefixo passam intactas.
+const WHATSAPP_PREFIX_RE = /^\s*\[?\s*(?:\d{1,2}:\d{2}(?::\d{2})?(?:\s*[,;]\s*\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4})?|\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}(?:\s*[,;]?\s*\d{1,2}:\d{2}(?::\d{2})?)?)\s*\]?\s*[-–—]?\s*[^:\n]{1,80}:\s*/;
+
+function removerMetadadosWhatsApp(linha) {
+  return linha.replace(WHATSAPP_PREFIX_RE, "");
+}
+
+const BULLET_RE = /^\s*[-•*–—·>]+\s*/;
+
+function limparPrefixos(linha) {
+  // Bullet → WhatsApp → bullet de novo: cobre tanto "- [hora] Fab: x"
+  // (bullet antes do prefixo) quanto "[hora] Fab: - x" (bullet dentro
+  // do conteúdo do WhatsApp).
+  return linha.replace(BULLET_RE, "").replace(WHATSAPP_PREFIX_RE, "").replace(BULLET_RE, "").trim();
+}
+
 function extrairItens(texto) {
   return String(texto || "")
     .split(/\r?\n+/)
-    .map(l => l.replace(/^\s*[-•*–—·>]+\s*/, "").trim())
+    .map(limparPrefixos)
     .filter(Boolean);
 }
 

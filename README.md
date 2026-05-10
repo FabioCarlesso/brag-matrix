@@ -33,10 +33,12 @@ Itens que não casam com nenhuma categoria caem em **Lazer** por padrão (config
 
 Cada categoria em `js/categories/*.js` declara um array `keywords`. O organizador (`js/organizador.js`):
 
-1. Quebra o texto por linhas e remove bullets (`-`, `•`, `*`, `>`...).
+1. Quebra o texto por linhas, remove bullets (`-`, `•`, `*`, `>`...) e tira prefixos do WhatsApp (`[12:20, 10/05/2026] Fulano:` e variações).
 2. Normaliza cada item (lowercase, sem acentos, sem pontuação).
 3. Conta matches de keyword por categoria — palavras-chave **multi-palavra** (ex.: `"almocei com"`) valem mais do que palavras isoladas.
 4. A categoria com maior pontuação ganha; sem matches → fallback (`lazer`).
+
+Você pode colar conteúdo direto do "Copiar mensagem" do WhatsApp — o app limpa data/hora/remetente automaticamente.
 
 Para melhorar a precisão, basta adicionar keywords nos arquivos de categoria.
 
