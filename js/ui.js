@@ -2,6 +2,7 @@
 // Renderização e manipulação do DOM.
 
 import { categorias } from "./categories/index.js";
+import { listarConquistasFormatadas } from "./format.js";
 
 export function $(sel) {
   return document.querySelector(sel);
@@ -156,13 +157,9 @@ export function formatarParaDocs(organizado) {
   if (organizado.summary) linhas.push(`💬 ${organizado.summary}`);
   linhas.push("");
 
-  categorias.forEach(cat => {
-    const itens = (organizado[cat.key] || []).filter(i => i && i.trim());
-    if (itens.length === 0) return;
-    linhas.push(`${cat.icon} ${cat.label.toUpperCase()}`);
-    itens.forEach(item => linhas.push(`  • ${item}`));
-    linhas.push("");
-  });
+  const conquistas = listarConquistasFormatadas(organizado);
+  conquistas.forEach(item => linhas.push(`  • ${item}`));
+  if (conquistas.length > 0) linhas.push("");
 
   linhas.push("─".repeat(40));
   return linhas.join("\n");
