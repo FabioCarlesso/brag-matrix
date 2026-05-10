@@ -1,0 +1,20 @@
+{
+  "name": "brag-matrix",
+  "version": "1.0.0",
+  "description": "Sistema pessoal de registro e organização de conquistas diárias com IA",
+  "type": "module",
+  "scripts": {
+    "test": "node test/categories.test.js && node test/storage.test.js && node test/format.test.js && node test/organizador.test.js",
+    "dev": "npx serve -l 3000 .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "brag-document",
+    "anthropic",
+    "claude",
+    "vercel",
+    "produtividade"
+  ],
+  "author": "Fabio Carlesso",
+  "license": "MIT"
+}

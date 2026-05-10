@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f0f1a" />
+  <meta name="description" content="Brag Matrix - Sistema pessoal de registro e organização de conquistas diárias" />
+  <title>Brag Matrix</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">✦</div>
+    <div class="titulo">
+      <h1>Brag Matrix</h1>
+      <div class="data" id="data-hoje">—</div>
+    </div>
+    <button class="btn-historico-header" id="btn-historico" aria-label="Abrir histórico">📚 Histórico</button>
+  </header>
+
+  <main class="container">
+
+    <!-- PASSO 1: Entrada -->
+    <section class="passo" id="passo-entrada">
+      <h2>Cole suas anotações</h2>
+      <p class="subtitulo">
+        Escreva tudo que você conquistou hoje — sem se preocupar com formato.
+        Cada linha vira um item, e o app classifica automaticamente nas categorias do seu Brag Document.
+      </p>
+
+      <textarea id="texto-bruto" maxlength="5000" aria-label="Suas anotações do dia" placeholder="Ex:
+- Corri 5km de manhã
+- Estudei inglês por 30 minutos
+- Fechei o PR do projeto X
+- Almocei com a Cah
+- Li 20 páginas do livro"></textarea>
+
+      <div class="erro" id="erro" role="alert" aria-live="polite"></div>
+
+      <button class="btn btn-primario" id="btn-organizar">
+        ✦ Organizar
+      </button>
+    </section>
+
+    <!-- PASSO 3: Revisar -->
+    <section class="passo" id="passo-revisar">
+      <h2>Revise e edite</h2>
+      <p class="subtitulo">Ajuste qualquer item antes de copiar para o Google Docs.</p>
+
+      <div id="resultado"></div>
+
+      <div class="btn-grupo">
+        <button class="btn btn-secundario" id="btn-novo">← Novo</button>
+        <button class="btn btn-secundario" id="btn-copiar">📋 Copiar formatado</button>
+        <button class="btn btn-primario" id="btn-salvar">✓ Salvar no histórico</button>
+      </div>
+    </section>
+
+    <!-- PASSO 4: Concluído -->
+    <section class="passo" id="passo-concluido">
+      <div class="concluido">
+        <div class="icone">✦</div>
+        <h2>Conquistas registradas!</h2>
+        <p class="subtitulo">Salvas no histórico local do seu navegador.</p>
+        <button class="btn btn-primario" id="btn-novo-2">+ Novo registro</button>
+      </div>
+    </section>
+
+    <!-- PASSO 5: Histórico -->
+    <section class="passo" id="passo-historico">
+      <h2>📚 Histórico</h2>
+      <p class="subtitulo">Toque numa entrada para revisitar suas conquistas.</p>
+
+      <div id="lista-historico"></div>
+
+      <div class="btn-grupo">
+        <button class="btn btn-secundario" id="btn-voltar-historico">← Voltar</button>
+        <button class="btn btn-secundario" id="btn-limpar-historico">🗑️ Limpar tudo</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
