@@ -5,16 +5,26 @@ export const familia = {
   color: "#f472b6",
   description: "Relacionamentos e interações sociais",
   keywords: [
-    "familia", "mae", "pai", "irmao", "irma", "filho", "filha",
+    "familia", "mae", "pai", "irmao", "irma", "filho", "filha", "filhos",
     "esposa", "esposo", "marido", "mulher", "namorado", "namorada",
     "amigo", "amiga", "amigos", "amigas", "colega", "colegas",
     "primo", "prima", "tio", "tia", "avo", "avos", "vovo", "vova",
-    "sogra", "sogro", "cunhado", "cunhada",
-    "almocei com", "jantei com", "cafe com", "lanchei com",
-    "conversei", "conversa", "papo", "bati papo",
+    "sogra", "sogro", "cunhado", "cunhada", "genro", "nora",
+    "afilhado", "afilhada", "padrinho", "madrinha",
+    "neto", "neta", "netos",
+    "bisavo", "bisavos", "bisneto", "bisneta",
+    "vizinho", "vizinha", "vizinhos",
+    "almocei com", "jantei com", "cafe com", "lanchei com", "tomei cafe com",
+    "conversei", "conversa", "papo", "bati papo", "papinho",
     "liguei", "ligacao", "videochamada", "video call", "facetime",
-    "encontrei", "visitei", "reencontrei",
-    "casamento", "aniversario", "festa de", "comemoracao",
-    "happy hour", "saiu com", "sair com"
+    "mandei mensagem", "mensagem para", "audio para", "zap com",
+    "encontrei", "visitei", "visita", "reencontrei", "vi a", "vi o",
+    "casamento", "aniversario", "festa de", "festa do", "comemoracao",
+    "happy hour", "saiu com", "sair com", "sai com",
+    "abracei", "abraco", "abracar",
+    "presente", "presenteei", "dei um presente",
+    "passei tempo com", "tempo com a familia", "tempo em familia",
+    "almoco em familia", "jantar em familia", "cafe da manha em familia",
+    "encontro de familia", "reuniao de familia", "convivio"
   ]
 };

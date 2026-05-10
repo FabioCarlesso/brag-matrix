@@ -63,5 +63,32 @@ for (const c of cats) {
   assert(Array.isArray(o10[c]), `Categoria "${c}" é array no resultado`);
 }
 
+// 11. Novas keywords ampliadas (#2): cada categoria classifica termos novos comuns
+const novos = [
+  ["Fui na academia hoje cedo", "saude"],
+  ["Fiz uma trilha no parque", "saude"],
+  ["Visitei minha avó", "familia"],
+  ["Mandei mensagem pro meu primo", "familia"],
+  ["Participei do grupo de oração", "espiritual"],
+  ["Rezei o terço hoje", "espiritual"],
+  ["Concluí o curso da Alura", "estudo"],
+  ["Estudei matemática para o ENEM", "estudo"],
+  ["Fui ao cinema com a galera", "lazer"],
+  ["Acampamento no fim de semana", "lazer"],
+  ["Subi pra produção sem incidente", "profissional"],
+  ["Fiz code review do PR", "profissional"],
+  ["Fiz um aporte na bolsa de valores", "financeiro"],
+  ["Recebi cashback no cartão", "financeiro"]
+];
+for (const [linha, esperado] of novos) {
+  const r = organizar(linha, dataISO);
+  assert(
+    (r[esperado] || []).includes(linha),
+    `"${linha}" → ${esperado} (recebeu: ${
+      Object.entries(r).find(([k, v]) => Array.isArray(v) && v.includes(linha))?.[0] || "?"
+    })`
+  );
+}
+
 console.log(`\n${falhas === 0 ? "✓ Todos os testes do organizador passaram" : `✗ ${falhas} falha(s)`}`);
 process.exit(falhas === 0 ? 0 : 1);
