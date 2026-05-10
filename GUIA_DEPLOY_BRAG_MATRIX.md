@@ -20,13 +20,12 @@ Projeto completo, pronto para subir como site estático:
 ## 🎯 Pré-requisitos
 
 - Conta no GitHub
-- Conta no Vercel, Netlify ou Cloudflare Pages — **gratuita** (qualquer uma serve)
 
 > Não precisa mais de chave da Anthropic. A classificação roda inteiramente no navegador.
 
 ---
 
-## 📋 Passo a passo (Vercel)
+## 📋 Passo a passo (GitHub Pages)
 
 ### 1️⃣ Subir o código no GitHub
 
@@ -51,18 +50,17 @@ git branch -M main
 git push -u origin main
 ```
 
-### 2️⃣ Deploy no Vercel
+### 2️⃣ Ativar GitHub Pages
 
-1. Acesse https://vercel.com/new
-2. **Import Git Repository** → selecione `brag-matrix`
-3. **Framework Preset:** Other
-4. **Root Directory:** `./`
-5. Clique **Deploy**
+1. No repositório, acesse **Settings** → **Pages**.
+2. Em **Build and deployment**, selecione **Source: GitHub Actions**.
+3. Salve a configuração.
+4. Faça push para `main`.
 
-Não há env vars para configurar.
+O workflow `.github/workflows/pages.yml` roda os testes e publica a raiz do projeto no GitHub Pages.
 
-Em ~20 segundos o Vercel devolve uma URL tipo:
-`https://brag-matrix-seuusuario.vercel.app`
+Em alguns minutos a aplicação fica disponível em:
+`https://fabiocarlesso.github.io/brag-matrix/`
 
 ### 3️⃣ Testar
 
@@ -81,10 +79,6 @@ Clique em **Organizar**. Deve aparecer cada item na sua categoria.
 
 ## 🌐 Outras opções de hospedagem (todas gratuitas)
 
-### GitHub Pages
-- Settings → Pages → Source: `main` → `/root` → Save.
-- O `.nojekyll` já está no projeto.
-
 ### Netlify
 - "Add new site" → "Import from Git" → escolha o repo.
 - Build command: vazio. Publish directory: `.`
@@ -92,6 +86,13 @@ Clique em **Organizar**. Deve aparecer cada item na sua categoria.
 ### Cloudflare Pages
 - "Create a project" → conecte o repo.
 - Build command: vazio. Build output directory: `.`
+
+### Vercel
+- Acesse https://vercel.com/new
+- Importe o repositório `brag-matrix`
+- Framework Preset: Other
+- Root Directory: `./`
+- Clique em **Deploy**
 
 ### Local sem deploy
 Qualquer servidor estático serve:
@@ -120,7 +121,7 @@ Vira um "app" com ícone próprio.
 
 ## 🔄 Atualizar depois
 
-Push para `main` → deploy automático em qualquer um dos serviços acima.
+Push para `main` → testes e deploy automático no GitHub Pages.
 
 ```bash
 git add .
