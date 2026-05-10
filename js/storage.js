@@ -1,6 +1,8 @@
 // js/storage.js
 // Gerencia o histórico local das últimas entradas.
 
+import { listarConquistasFormatadas } from "./format.js";
+
 const KEY = "brag-matrix-historico";
 const LIMITE = 30;
 
@@ -10,6 +12,7 @@ export function salvarHistorico(entrada) {
   semDuplicata.unshift({
     data: entrada.date,
     summary: entrada.summary,
+    conquistas: listarConquistasFormatadas(entrada),
     organizado: entrada,
     timestamp: Date.now()
   });

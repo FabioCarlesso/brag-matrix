@@ -15,6 +15,9 @@ Você cola anotações livres do WhatsApp, o app classifica automaticamente em 7
 5. Clique em **Copiar formatado**.
 6. Cole no seu Google Docs.
 
+Ao copiar ou salvar, cada conquista é registrada no formato `Categoria - Conquista`
+(por exemplo, `Saúde - Corri 5km`).
+
 ## Categorias
 
 | Categoria | Ícone | Descrição |

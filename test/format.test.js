@@ -32,6 +32,8 @@ const out1 = formatarParaDocs({
 assert(out1.includes("10/05/2026"), "Data válida formatada como dd/mm/yyyy");
 assert(out1.includes("Corri 5km"), "Item da categoria aparece na saída");
 assert(out1.includes("💬 Dia produtivo"), "Summary aparece na saída");
+assert(out1.includes("Saúde - Corri 5km"), "Conquista sai no formato Categoria - Conquista");
+assert(!out1.includes("🏃 SAÚDE"), "Exportação não repete categoria como cabeçalho separado");
 
 // 2. Data ausente NÃO gera "NaN/NaN/NaN"
 const out2 = formatarParaDocs({
@@ -72,7 +74,7 @@ const out4 = formatarParaDocs({
   profissional: [],
   financeiro: []
 });
-assert(out4.includes("SAÚDE"), "Categoria com item aparece");
+assert(out4.includes("Saúde - Item"), "Categoria com item aparece no prefixo da conquista");
 assert(!out4.includes("LAZER"), "Categoria vazia é omitida");
 
 console.log(`\n${falhas === 0 ? "✓ Todos os testes de formatação passaram" : `✗ ${falhas} falha(s)`}`);

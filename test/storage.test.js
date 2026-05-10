@@ -24,22 +24,28 @@ limparHistorico();
 assert(listarHistorico().length === 0, "Histórico começa vazio");
 
 // 2. Salvar uma entrada
-salvarHistorico({ date: "2026-05-10", summary: "primeiro" });
+salvarHistorico({ date: "2026-05-10", summary: "primeiro", saude: ["Corri 5km"] });
 let lista = listarHistorico();
 assert(lista.length === 1 && lista[0].summary === "primeiro", "Salva uma entrada");
+assert(
+  lista[0].conquistas.length === 1 && lista[0].conquistas[0] === "Saúde - Corri 5km",
+  "Salva conquistas no formato Categoria - Conquista"
+);
 
 // 3. Salvar duas datas distintas → 2 entradas, mais recente primeiro
-salvarHistorico({ date: "2026-05-11", summary: "segundo" });
+salvarHistorico({ date: "2026-05-11", summary: "segundo", estudo: ["Estudei inglês"] });
 lista = listarHistorico();
 assert(lista.length === 2, "Duas datas distintas → duas entradas");
 assert(lista[0].data === "2026-05-11", "Mais recente fica no topo");
+assert(lista[0].conquistas[0] === "Estudo - Estudei inglês", "Formato é aplicado em novas entradas");
 
 // 4. Upsert: salvar mesma data sobrescreve
-salvarHistorico({ date: "2026-05-10", summary: "primeiro-editado" });
+salvarHistorico({ date: "2026-05-10", summary: "primeiro-editado", profissional: ["Fechei o PR"] });
 lista = listarHistorico();
 assert(lista.length === 2, "Salvar mesma data não duplica");
 const r = lista.find(e => e.data === "2026-05-10");
 assert(r && r.summary === "primeiro-editado", "Salvar mesma data sobrescreve");
+assert(r.conquistas[0] === "Profissional - Fechei o PR", "Upsert atualiza conquistas formatadas");
 
 // 5. removerEntrada
 removerEntrada("2026-05-10");
@@ -50,7 +56,7 @@ assert(lista.length === 1 && lista[0].data === "2026-05-11", "removerEntrada apa
 limparHistorico();
 for (let i = 0; i < 35; i++) {
   const d = `2026-${String(1 + Math.floor(i / 30)).padStart(2, "0")}-${String((i % 28) + 1).padStart(2, "0")}`;
-  salvarHistorico({ date: d, summary: `e${i}` });
+  salvarHistorico({ date: d, summary: `e${i}`, lazer: [`item ${i}`] });
 }
 lista = listarHistorico();
 assert(lista.length === 30, "Limite de 30 entradas é respeitado");
