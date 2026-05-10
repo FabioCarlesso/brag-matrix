@@ -30,9 +30,9 @@ assert(o2.espiritual.includes("Meditei 10 min"), "Bullet '>' é removido e categ
 const o3 = organizar("paguei a fatura do cartão", dataISO);
 assert(o3.financeiro.length === 1, "Acentos são normalizados — financeiro classifica");
 
-// 4. Sem matches → fallback (lazer por padrão)
+// 4. Sem matches → fallback (família por padrão)
 const o4 = organizar("xyzabc inventado totalmente", dataISO);
-assert(o4.lazer.includes("xyzabc inventado totalmente"), "Fallback para lazer quando nada bate");
+assert(o4.familia.includes("xyzabc inventado totalmente"), "Fallback para família quando nada bate");
 
 // 5. Fallback configurável
 const o5 = organizar("xyzabc inventado", dataISO, { fallback: "profissional" });

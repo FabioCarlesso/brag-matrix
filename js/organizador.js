@@ -5,7 +5,7 @@
 
 import { categorias } from "./categories/index.js";
 
-const FALLBACK_PADRAO = "lazer";
+const FALLBACK_PADRAO = "familia";
 
 function normalizar(s) {
   return String(s || "")
