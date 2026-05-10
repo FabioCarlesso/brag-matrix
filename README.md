@@ -8,7 +8,7 @@ Você cola anotações livres do WhatsApp, o app classifica automaticamente em 7
 
 ## Como usar
 
-1. Acesse a página pelo navegador (celular ou desktop).
+1. Acesse https://fabiocarlesso.github.io/brag-matrix/ pelo navegador (celular ou desktop).
 2. Cole o texto bruto das suas conquistas do dia (limite de 5000 caracteres). Cada linha vira um item.
 3. Clique em **Organizar**.
 4. Revise e edite o resultado por categoria.
@@ -58,7 +58,7 @@ Alternativas: `python3 -m http.server 3000`, `php -S localhost:3000`, abrir o `i
 
 Como é puro HTML/CSS/JS, dá pra hospedar em qualquer lugar gratuitamente:
 
-- **GitHub Pages** — habilite Pages no repo apontando para a branch `main` (raiz). O `.nojekyll` já está no projeto.
+- **GitHub Pages** — deploy automático pelo workflow `.github/workflows/pages.yml` a cada push na `main`. Configure Pages no GitHub para usar **GitHub Actions** como source. O `.nojekyll` já está no projeto.
 - **Vercel** — `vercel --prod` ou conecte o repo no painel. Sem env vars necessárias.
 - **Netlify** — drag-and-drop da pasta ou conecte o repo. Build command vazio, publish directory `.`.
 - **Cloudflare Pages** — equivalente.
@@ -97,6 +97,8 @@ A categoria aparece automaticamente na interface e no organizador.
 ```
 brag-matrix/
 ├── index.html          # Página principal
+├── .github/workflows/
+│   └── pages.yml       # Deploy automático no GitHub Pages
 ├── vercel.json         # Configuração Vercel (estático)
 ├── package.json        # Scripts npm
 ├── .gitignore
