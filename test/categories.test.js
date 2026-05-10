@@ -34,5 +34,35 @@ for (const cat of categorias) {
   assert(typeof cat.color === "string" && cat.color.startsWith("#"), `Categoria "${cat.key}" tem color hex`);
 }
 
+// Test 4: cada categoria tem um conjunto razoável de keywords (após #2)
+const MIN_KEYWORDS = 30;
+for (const cat of categorias) {
+  const total = Array.isArray(cat.keywords) ? cat.keywords.length : 0;
+  assert(
+    total >= MIN_KEYWORDS,
+    `Categoria "${cat.key}" tem >= ${MIN_KEYWORDS} keywords (atual: ${total})`
+  );
+}
+
+// Test 5: keywords não têm duplicatas dentro da mesma categoria (após normalização básica)
+function normKw(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+for (const cat of categorias) {
+  const seen = new Set();
+  const dups = [];
+  for (const kw of cat.keywords || []) {
+    const n = normKw(kw);
+    if (seen.has(n)) dups.push(kw);
+    seen.add(n);
+  }
+  assert(dups.length === 0, `Categoria "${cat.key}" sem duplicatas (encontradas: ${dups.join(", ") || "—"})`);
+}
+
 console.log(`\n${falhas === 0 ? "✓ Todos os testes passaram" : `✗ ${falhas} falha(s)`}`);
 process.exit(falhas === 0 ? 0 : 1);
